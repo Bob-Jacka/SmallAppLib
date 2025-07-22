@@ -1,0 +1,1 @@
+Python library for anyone who wants to create small app with menus (console app)
