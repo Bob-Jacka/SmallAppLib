@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Literal
 
 
 class TextAnsiFormatter:
@@ -95,11 +96,14 @@ class TextAnsiFormatter:
         yellow_color = '\033[93m'
         cyan_color = '\033[96m'
         light_gray_color = '\033[96m'
-        reset_color = '\033[00m'  # special ansi color, reset console color
         black_color = '\033[30m'
         purple_color = '\033[35m'
         sea_color = '\033[36m'  # aquamarine like color
         white_color = '\033[97m'
+        blue_color = '\33[34m'
+
+        reset_color = '\033[00m'  # special ansi color, reset console color
+        clear_screen_color = '\033[2J'  # ansi sequence for clear screen
 
         def get_value(self):
             return self.value
@@ -121,6 +125,15 @@ class TextAnsiFormatter:
         :return: None
         """
         print("\033[92m {}\033[00m".format(string))
+
+    @staticmethod
+    def prBlue(string: str):
+        """
+        Function for printing string message in blue color
+        :param string: string to print in color
+        :return: None
+        """
+        print('\33[34m {}\033[00m'.format(string))
 
     @staticmethod
     def prYellow(string: str):
@@ -147,7 +160,7 @@ class TextAnsiFormatter:
         :param string: string to print in color
         :return: None
         """
-        print("\033[96m {}\033[00m".format(string))
+        print("\033[39m {}\033[00m".format(string))
 
     @staticmethod
     def prPurple(string: str):
@@ -193,7 +206,7 @@ class TextAnsiFormatter:
         :param color: ansi color from Colors enumeration
         :return: None
         """
-        print(f'{color.get_value()}{string}{TextAnsiFormatter.Colors.reset_color}')
+        print(f'{color.get_value()}{string}{TextAnsiFormatter.Colors.reset_color.value}')
 
     @staticmethod
     def prClearColor():
@@ -201,7 +214,7 @@ class TextAnsiFormatter:
         Clear color from console output
         :return: None
         """
-        print(TextAnsiFormatter.Colors.reset_color)
+        print(TextAnsiFormatter.Colors.reset_color.value)
 
     @staticmethod
     def prBold(string: str):
@@ -210,7 +223,7 @@ class TextAnsiFormatter:
         :param string: str value that will be printed
         :return: None
         """
-        print(f'{TextAnsiFormatter.TextFormat.bold_start}{string}{TextAnsiFormatter.Colors.reset_color}')
+        print(f'{TextAnsiFormatter.TextFormat.bold_start.value}{string}{TextAnsiFormatter.Colors.reset_color.value}')
 
     @staticmethod
     def prItalic(string: str):
@@ -219,7 +232,7 @@ class TextAnsiFormatter:
         :param string: str value that will be printed
         :return: None
         """
-        print(f'{TextAnsiFormatter.TextFormat.italic_start}{string}{TextAnsiFormatter.Colors.reset_color}')
+        print(f'{TextAnsiFormatter.TextFormat.italic_start.value}{string}{TextAnsiFormatter.Colors.reset_color.value}')
 
     @staticmethod
     def prUnderline(string: str):
@@ -237,4 +250,42 @@ class TextAnsiFormatter:
         :param string: string to print with shape
         :return: None
         """
-        print(f'{TextAnsiFormatter.TextFormat.white_text_bound}{string}{TextAnsiFormatter.Colors.reset_color}')
+        print(f'{TextAnsiFormatter.TextFormat.white_text_bound.value}{string}{TextAnsiFormatter.Colors.reset_color.value}')
+
+    @staticmethod
+    def clearScreen():
+        """
+        Function for clear screen (console)
+        :return: None
+        """
+        print(TextAnsiFormatter.Colors.clear_screen_color.get_value())
+
+    Style_literals = Literal[
+        'underline', 'no-underline', 'bound', 'no-bound',
+        'fill_bg', 'no-fill_bg', 'crossed', 'no-crossed'
+    ]
+    """
+    Constraint type for styles in constructing string
+    """
+
+    @staticmethod
+    def construct_string(string: str, is_underline: Style_literals = 'no-underline', is_bound: Style_literals = 'no-bound', is_fill_bg: Style_literals = 'no-fill_bg',
+                         is_crossed: Style_literals = 'no-crossed'):
+        """
+        Pretty ugly function for constructing string with different features
+        :param string: string to print with features
+        :param is_underline: literal string if you need underline
+        :param is_bound: literal string if you need bound
+        :param is_fill_bg: literal string if you need fill background with color
+        :param is_crossed: literal string if you need to cross the string
+        :return: None
+        """
+        if is_underline == 'underline':
+            print(TextAnsiFormatter.TextFormat.underline_start.get_value(), end='')
+        elif is_bound == 'bound':
+            print(TextAnsiFormatter.TextFormat.white_text_bound.get_value(), end='')
+        elif is_fill_bg == 'fill_bg':
+            print(TextAnsiFormatter.TextFormat.blue_fill_bg_color_start.get_value(), end='')
+        elif is_crossed == 'crossed':
+            print(TextAnsiFormatter.TextFormat.crossed_text_start.get_value(), end='')
+        print(f'{string}{TextAnsiFormatter.Colors.reset_color.get_value()}')
