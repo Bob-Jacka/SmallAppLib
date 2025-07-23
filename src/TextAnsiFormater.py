@@ -1,0 +1,240 @@
+from enum import Enum
+
+
+class TextAnsiFormatter:
+    """
+    Utility class for text formater.
+    Includes print functions in different colors and underline technology.
+    """
+
+    class TextFormat(Enum):
+        """
+        Class for text formatting, ex. underline it or cross it
+        """
+
+        underline_start = '\033[4m'
+        """
+        Start of the words with underline
+        """
+
+        italic_start = '\033[3m'
+        """
+        Start of the words italic
+        """
+
+        bold_start = '\033[1m'
+        """
+        Start of the words with bold
+        """
+
+        white_fill_bg_color_start = '\033[7m'
+        """
+        Fills background color of the text with white
+        """
+
+        red_fill_bg_color_start = '\033[41m'
+        """
+        Fills background color of the text with red
+        """
+
+        lime_fill_bg_color_start = '\033[42m'
+        """
+        Fills background color of the text with lime
+        """
+
+        yellow_fill_bg_color_start = '\033[43m'
+        """
+        Fills background color of the text with yellow
+        """
+
+        blue_fill_bg_color_start = '\033[44m'
+        """
+        Fills background color of the text with blue
+        """
+
+        pink_fill_bg_color_start = '\033[45m'
+        """
+        Fills background color of the text with pink
+        """
+
+        sea_fill_bg_color_start = '\033[46m'
+        """
+        Fills background color of the text with aquamarine
+        """
+
+        gray_fill_bg_color_start = '\033[47m'
+        """
+        Fills background color of the text with gray
+        """
+
+        crossed_text_start = '\033[9m'
+        """
+        Cross text
+        """
+
+        underline_end = '\033[0m'
+        """
+        End of the words underline
+        """
+
+        white_text_bound = '\033[51m'
+        """
+        Bound text in shape
+        """
+
+        def get_value(self):
+            return self.value
+
+    class Colors(Enum):
+        """
+        Enumeration class for colors in small app lib
+        """
+
+        red_color = '\033[91m'
+        green_color = '\033[92m'
+        yellow_color = '\033[93m'
+        cyan_color = '\033[96m'
+        light_gray_color = '\033[96m'
+        reset_color = '\033[00m'  # special ansi color, reset console color
+        black_color = '\033[30m'
+        purple_color = '\033[35m'
+        sea_color = '\033[36m'  # aquamarine like color
+        white_color = '\033[97m'
+
+        def get_value(self):
+            return self.value
+
+    @staticmethod
+    def prRed(string: str):
+        """
+        Function for printing string message in red color
+        :param string: string to print in color
+        :return: None
+        """
+        print("\033[91m {}\033[00m".format(string))
+
+    @staticmethod
+    def prGreen(string: str):
+        """
+        Function for printing string message in green color
+        :param string: string to print in color
+        :return: None
+        """
+        print("\033[92m {}\033[00m".format(string))
+
+    @staticmethod
+    def prYellow(string: str):
+        """
+        Function for printing string message in yellow color
+        :param string: string to print in color
+        :return: None
+        """
+        print("\033[93m {}\033[00m".format(string))
+
+    @staticmethod
+    def prCyan(string: str):
+        """
+        Function for printing string message in cyan color
+        :param string: string to print in color
+        :return: None
+        """
+        print("\033[96m {}\033[00m".format(string))
+
+    @staticmethod
+    def prLightGray(string: str):
+        """
+        Function for printing string message in gray color
+        :param string: string to print in color
+        :return: None
+        """
+        print("\033[96m {}\033[00m".format(string))
+
+    @staticmethod
+    def prPurple(string: str):
+        """
+        Function for printing string message in purple color
+        :param string: str value that will be printed
+        :return: None
+        """
+        print("\033[35m {}\033[00m".format(string))
+
+    @staticmethod
+    def prWhite(string: str):
+        """
+        Function for printing string message in white color
+        :param string: str value that will be printed
+        :return: None
+        """
+        print("\033[97m {}\033[00m".format(string))
+
+    @staticmethod
+    def prAquamarine(string: str):
+        """
+        Function for printing string message in aquamarine color
+        :param string: str value that will be printed
+        :return: None
+        """
+        print("\033[36m {}\033[00m".format(string))
+
+    @staticmethod
+    def prBlack(string: str):
+        """
+        Function for printing string message in black color
+        :param string: str value that will be printed
+        :return: None
+        """
+        print("\033[30m {}\033[00m".format(string))
+
+    @staticmethod
+    def prTextInColor(string: str, color: Colors):
+        """
+        Function for text output in custom color
+        :param string: str value that will be printed
+        :param color: ansi color from Colors enumeration
+        :return: None
+        """
+        print(f'{color.get_value()}{string}{TextAnsiFormatter.Colors.reset_color}')
+
+    @staticmethod
+    def prClearColor():
+        """
+        Clear color from console output
+        :return: None
+        """
+        print(TextAnsiFormatter.Colors.reset_color)
+
+    @staticmethod
+    def prBold(string: str):
+        """
+        Print bold text to the console
+        :param string: str value that will be printed
+        :return: None
+        """
+        print(f'{TextAnsiFormatter.TextFormat.bold_start}{string}{TextAnsiFormatter.Colors.reset_color}')
+
+    @staticmethod
+    def prItalic(string: str):
+        """
+        Print italic (cursive) text to the console
+        :param string: str value that will be printed
+        :return: None
+        """
+        print(f'{TextAnsiFormatter.TextFormat.italic_start}{string}{TextAnsiFormatter.Colors.reset_color}')
+
+    @staticmethod
+    def prUnderline(string: str):
+        """
+        Function for printing string message underlined
+        :param string: string to print with underline under it
+        :return: None
+        """
+        print("\033[4m {}\033[0m".format(string))
+
+    @staticmethod
+    def prBoundText(string: str):
+        """
+        Function for printing string message with shape bounding around text
+        :param string: string to print with shape
+        :return: None
+        """
+        print(f'{TextAnsiFormatter.TextFormat.white_text_bound}{string}{TextAnsiFormatter.Colors.reset_color}')

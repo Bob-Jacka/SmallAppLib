@@ -22,10 +22,14 @@ def sim_menu_int(points):
 
 def sim_menu_string(points):
     """
-
+    Simple menu with string input
     :param points: container with data
     :return: None
     """
     while True:
         seq_output_without_counter(points)
         check_string_input(len(points))
+
+
+def sim_menu():
+    pass

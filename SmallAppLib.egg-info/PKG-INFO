@@ -1,3 +1,26 @@
+Metadata-Version: 2.4
+Name: SmallAppLib
+Version: 1.0.0
+Summary: App for simple console app building
+Author: Cupcake_wrld
+Author-email: ccaatt63@gmail.com
+Project-URL: GitHub, Bob-jacka
+Keywords: files small console
+Classifier: Programming Language :: Python :: 3.12
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: keywords
+Dynamic: project-url
+Dynamic: requires-python
+Dynamic: summary
+
 # Small App lib
 
 ## What is it?:

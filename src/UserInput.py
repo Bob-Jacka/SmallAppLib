@@ -43,6 +43,7 @@ def float_input(optional_point_name: str = '') -> float:
 
 
 #####Simple input functions
+
 #####Checking functions
 def check_int_input(check_cond: int, optional_point_name: str = '') -> int | None:
     """
@@ -87,11 +88,12 @@ def check_float_input(check_cond, optional_point_name: str = '') -> float | None
 
 
 #####Checking functions
+
 ##### Checking infinity loops functions
 def check_infinity_int_input(check_cond: int, point_name: str) -> int | None:
     """
     Simple version of integer input.
-    Do check for condition
+    Do check for given condition
     :return: int value
     """
     while True:
@@ -106,7 +108,7 @@ def check_infinity_int_input(check_cond: int, point_name: str) -> int | None:
 def check_infinity_string_input(check_cond, point_name: str) -> str | None:
     """
     Simple version of string input.
-    Do check for condition
+    Do check for given condition
     :return: string value
     """
     while True:
@@ -121,7 +123,7 @@ def check_infinity_string_input(check_cond, point_name: str) -> str | None:
 def check_infinity_float_input(check_cond, point_name: str) -> float | None:
     """
     Simple version of float input.
-    Do check for condition
+    Do check for given condition
     :return: float value
     """
     while True:

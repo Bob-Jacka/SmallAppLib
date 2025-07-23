@@ -28,7 +28,7 @@ def seq_output_with_counter(list_to_iterate, counter_start_value: int = 0):
 
 def column_output_with_counter(list_to_iterate, counter_start_value: int = 0):
     """
-
+    Function for column output, include counter
     :param list_to_iterate:
     :param counter_start_value:
     :return: None
@@ -38,7 +38,7 @@ def column_output_with_counter(list_to_iterate, counter_start_value: int = 0):
 
 def column_output_without_counter(list_to_iterate):
     """
-
+    Function for column output, do not include counter
     :param list_to_iterate:
     :return: None
     """
