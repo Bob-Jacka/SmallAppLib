@@ -2,7 +2,7 @@
 File with custom user inputs
 """
 
-STATIC_USER_INPUT_INVITE: str = '>> '
+STATIC_USER_INPUT_SYM: str = '>> '
 """
 Symbol that will be in user input
 """
@@ -16,7 +16,7 @@ def int_input(optional_point_name: str = '') -> int:
     :return: int value
     """
     print(optional_point_name)
-    user_input = int(input(STATIC_USER_INPUT_INVITE))
+    user_input = int(input(STATIC_USER_INPUT_SYM))
     return user_input
 
 
@@ -27,7 +27,7 @@ def string_input(optional_point_name: str = '') -> str:
     :return: string value
     """
     print(optional_point_name)
-    user_input = input(STATIC_USER_INPUT_INVITE)
+    user_input = input(STATIC_USER_INPUT_SYM)
     return user_input
 
 
@@ -38,7 +38,7 @@ def float_input(optional_point_name: str = '') -> float:
     :return: float value
     """
     print(optional_point_name)
-    user_input = float(input(STATIC_USER_INPUT_INVITE))
+    user_input = float(input(STATIC_USER_INPUT_SYM))
     return user_input
 
 
@@ -52,7 +52,7 @@ def check_int_input(check_cond: int, optional_point_name: str = '') -> int | Non
     :return: int value
     """
     print(optional_point_name)
-    user_input = int(input(STATIC_USER_INPUT_INVITE))
+    user_input = int(input(STATIC_USER_INPUT_SYM))
     if user_input in check_cond:
         return user_input
     else:
@@ -66,7 +66,7 @@ def check_string_input(check_cond, optional_point_name: str = '') -> str | None:
     :return: string value
     """
     print(optional_point_name)
-    user_input = input(STATIC_USER_INPUT_INVITE)
+    user_input = input(STATIC_USER_INPUT_SYM)
     if user_input in check_cond:
         return user_input
     else:
@@ -80,7 +80,7 @@ def check_float_input(check_cond, optional_point_name: str = '') -> float | None
     :return: float value
     """
     print(optional_point_name)
-    user_input = float(input(STATIC_USER_INPUT_INVITE))
+    user_input = float(input(STATIC_USER_INPUT_SYM))
     if user_input in check_cond:
         return user_input
     else:
@@ -98,7 +98,7 @@ def check_infinity_int_input(check_cond: int, point_name: str) -> int | None:
     """
     while True:
         print(point_name)
-        user_input = int(input(STATIC_USER_INPUT_INVITE))
+        user_input = int(input(STATIC_USER_INPUT_SYM))
         if user_input in check_cond:
             return user_input
         else:
@@ -113,7 +113,7 @@ def check_infinity_string_input(check_cond, point_name: str) -> str | None:
     """
     while True:
         print(point_name)
-        user_input = input(STATIC_USER_INPUT_INVITE)
+        user_input = input(STATIC_USER_INPUT_SYM)
         if user_input in check_cond:
             return user_input
         else:
@@ -128,7 +128,7 @@ def check_infinity_float_input(check_cond, point_name: str) -> float | None:
     """
     while True:
         print(point_name)
-        user_input = float(input(STATIC_USER_INPUT_INVITE))
+        user_input = float(input(STATIC_USER_INPUT_SYM))
         if user_input in check_cond:
             return user_input
         else:

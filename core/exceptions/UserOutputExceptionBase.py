@@ -1,0 +1,2 @@
+class UserOutputExceptionBase(Exception):
+    pass

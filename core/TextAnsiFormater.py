@@ -6,6 +6,7 @@ class TextAnsiFormatter:
     """
     Utility class for text formater.
     Includes print functions in different colors and underline technology.
+    Also include two enumeration classes for TextFormat (styles) and Colors (Ansi colors).
     """
 
     class TextFormat(Enum):
@@ -109,7 +110,7 @@ class TextAnsiFormatter:
             return self.value
 
     @staticmethod
-    def prRed(string: str):
+    def prRed(string: str) -> None:
         """
         Function for printing string message in red color
         :param string: string to print in color
@@ -118,7 +119,7 @@ class TextAnsiFormatter:
         print("\033[91m {}\033[00m".format(string))
 
     @staticmethod
-    def prGreen(string: str):
+    def prGreen(string: str) -> None:
         """
         Function for printing string message in green color
         :param string: string to print in color
@@ -127,7 +128,7 @@ class TextAnsiFormatter:
         print("\033[92m {}\033[00m".format(string))
 
     @staticmethod
-    def prBlue(string: str):
+    def prBlue(string: str) -> None:
         """
         Function for printing string message in blue color
         :param string: string to print in color
@@ -136,7 +137,7 @@ class TextAnsiFormatter:
         print('\33[34m {}\033[00m'.format(string))
 
     @staticmethod
-    def prYellow(string: str):
+    def prYellow(string: str) -> None:
         """
         Function for printing string message in yellow color
         :param string: string to print in color
@@ -145,7 +146,7 @@ class TextAnsiFormatter:
         print("\033[93m {}\033[00m".format(string))
 
     @staticmethod
-    def prCyan(string: str):
+    def prCyan(string: str) -> None:
         """
         Function for printing string message in cyan color
         :param string: string to print in color
@@ -154,7 +155,7 @@ class TextAnsiFormatter:
         print("\033[96m {}\033[00m".format(string))
 
     @staticmethod
-    def prLightGray(string: str):
+    def prLightGray(string: str) -> None:
         """
         Function for printing string message in gray color
         :param string: string to print in color
@@ -163,7 +164,7 @@ class TextAnsiFormatter:
         print("\033[39m {}\033[00m".format(string))
 
     @staticmethod
-    def prPurple(string: str):
+    def prPurple(string: str) -> None:
         """
         Function for printing string message in purple color
         :param string: str value that will be printed
@@ -172,7 +173,7 @@ class TextAnsiFormatter:
         print("\033[35m {}\033[00m".format(string))
 
     @staticmethod
-    def prWhite(string: str):
+    def prWhite(string: str) -> None:
         """
         Function for printing string message in white color
         :param string: str value that will be printed
@@ -181,7 +182,7 @@ class TextAnsiFormatter:
         print("\033[97m {}\033[00m".format(string))
 
     @staticmethod
-    def prAquamarine(string: str):
+    def prAquamarine(string: str) -> None:
         """
         Function for printing string message in aquamarine color
         :param string: str value that will be printed
@@ -190,7 +191,7 @@ class TextAnsiFormatter:
         print("\033[36m {}\033[00m".format(string))
 
     @staticmethod
-    def prBlack(string: str):
+    def prBlack(string: str) -> None:
         """
         Function for printing string message in black color
         :param string: str value that will be printed
@@ -199,7 +200,7 @@ class TextAnsiFormatter:
         print("\033[30m {}\033[00m".format(string))
 
     @staticmethod
-    def prTextInColor(string: str, color: Colors):
+    def prTextInColor(string: str, color: Colors) -> None:
         """
         Function for text output in custom color
         :param string: str value that will be printed
@@ -209,7 +210,7 @@ class TextAnsiFormatter:
         print(f'{color.get_value()}{string}{TextAnsiFormatter.Colors.reset_color.value}')
 
     @staticmethod
-    def prClearColor():
+    def prClearColor() -> None:
         """
         Clear color from console output
         :return: None
@@ -217,7 +218,7 @@ class TextAnsiFormatter:
         print(TextAnsiFormatter.Colors.reset_color.value)
 
     @staticmethod
-    def prBold(string: str):
+    def prBold(string: str) -> None:
         """
         Print bold text to the console
         :param string: str value that will be printed
@@ -226,7 +227,7 @@ class TextAnsiFormatter:
         print(f'{TextAnsiFormatter.TextFormat.bold_start.value}{string}{TextAnsiFormatter.Colors.reset_color.value}')
 
     @staticmethod
-    def prItalic(string: str):
+    def prItalic(string: str) -> None:
         """
         Print italic (cursive) text to the console
         :param string: str value that will be printed
@@ -235,7 +236,7 @@ class TextAnsiFormatter:
         print(f'{TextAnsiFormatter.TextFormat.italic_start.value}{string}{TextAnsiFormatter.Colors.reset_color.value}')
 
     @staticmethod
-    def prUnderline(string: str):
+    def prUnderline(string: str) -> None:
         """
         Function for printing string message underlined
         :param string: string to print with underline under it
@@ -244,7 +245,7 @@ class TextAnsiFormatter:
         print("\033[4m {}\033[0m".format(string))
 
     @staticmethod
-    def prBoundText(string: str):
+    def prBoundText(string: str) -> None:
         """
         Function for printing string message with shape bounding around text
         :param string: string to print with shape
@@ -253,26 +254,47 @@ class TextAnsiFormatter:
         print(f'{TextAnsiFormatter.TextFormat.white_text_bound.value}{string}{TextAnsiFormatter.Colors.reset_color.value}')
 
     @staticmethod
-    def clearScreen():
+    def clearScreen() -> None:
         """
         Function for clear screen (console)
         :return: None
         """
         print(TextAnsiFormatter.Colors.clear_screen_color.get_value())
 
-    Style_literals = Literal[
-        'underline', 'no-underline', 'bound', 'no-bound',
-        'fill_bg', 'no-fill_bg', 'crossed', 'no-crossed'
+    Underline_style = Literal[
+        'underline', 'no-underline'
     ]
     """
-    Constraint type for styles in constructing string
+    Style bundle for underline
+    """
+
+    Bound_style = Literal[
+        'bound', 'no-bound'
+    ]
+    """
+    Style bundle for bound
+    """
+
+    Crossed_style = Literal[
+        'crossed', 'no-crossed'
+    ]
+    """
+    Style bundle for cross words
+    """
+
+    Fill_bg_style = Literal[
+        'fill_bg', 'no-fill_bg'
+    ]
+    """
+    Style bundle for fill background
     """
 
     @staticmethod
-    def construct_string(string: str, is_underline: Style_literals = 'no-underline', is_bound: Style_literals = 'no-bound', is_fill_bg: Style_literals = 'no-fill_bg',
-                         is_crossed: Style_literals = 'no-crossed'):
+    def construct_string(string: str, is_underline: Underline_style = 'no-underline', is_bound: Bound_style = 'no-bound', is_fill_bg: Fill_bg_style = 'no-fill_bg',
+                         is_crossed: Crossed_style = 'no-crossed') -> None:
         """
-        Pretty ugly function for constructing string with different features
+        Pretty ugly function for constructing string with different features like:
+        underline, bound, fill_bg, crossed.
         :param string: string to print with features
         :param is_underline: literal string if you need underline
         :param is_bound: literal string if you need bound

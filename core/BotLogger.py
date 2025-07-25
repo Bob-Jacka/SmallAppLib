@@ -16,6 +16,7 @@ class BotLogger:
     __logger: logging.Logger  # private instance of composite logger
     __is_file_write: bool  # is need write to file
     __is_logging: bool  # do you need logging or not
+    __log_file_name: str  # name of the log file
 
     def __init__(self, name: str = 'simple_logger', is_file_write: bool = False, is_on: bool = True):
         self.__logger = logging.getLogger(name)
@@ -55,7 +56,7 @@ class BotLogger:
         :return: None
         """
         try:
-            self.__log_file = open("../bot_logs_file.log")
+            self.__log_file = open(self.__log_file_name)
         except Exception as e:
             print(f"{(datetime.now())}: Exception occurred in logger - {e}.")
             self.__log_file.close()
@@ -84,9 +85,9 @@ class BotLogger:
         """
         return self.__log_file
 
-    def set_log_file_name(self):
+    def set_log_file_name(self, log_file_name: str):
         """
-        Setter method for logger
+        Setter method for logger file name
         :return: None
         """
-        pass
+        self.__log_file_name = log_file_name

@@ -4,8 +4,8 @@
 author - Cupcake_wrld
 """
 
-from src.SimpleMenus import *
-from src.UserInput import *
-from src.UserOutput import *
-from src.TextAnsiFormater import *
+from core.SimpleMenus import *
+from core.UserInput import *
+from core.UserOutput import *
+from core.TextAnsiFormater import *
 

@@ -1,0 +1,2 @@
+class UserInputExceptionBase(Exception):
+    pass

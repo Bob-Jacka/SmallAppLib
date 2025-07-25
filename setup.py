@@ -11,9 +11,9 @@ def readme():
 
 setup(
     name='SmallAppLib',
-    version='1.0.0',
+    version='1.1.0',
     author='Cupcake_wrld',
-    author_email='ccaatt63@gmail.com',
+    author_email='evilprog@yandex.ru',
     description='App for simple console app building',
     long_description=readme(),
     long_description_content_type='text/markdown',
@@ -21,12 +21,11 @@ setup(
     install_requires=[],
     classifiers=[
         'Programming Language :: Python :: 3.12',
-        'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent'
     ],
     keywords='files small console ',
     project_urls={
-        'GitHub': 'Bob-jacka'
+        'Pypi': 'Cupcake_wrld'
     },
     python_requires='>=3.12'
 )
