@@ -11,7 +11,7 @@ def readme():
 
 setup(
     name='SmallAppLib',
-    version='1.1.0',
+    version='1.2.0',
     author='Cupcake_wrld',
     author_email='evilprog@yandex.ru',
     description='App for simple console app building',

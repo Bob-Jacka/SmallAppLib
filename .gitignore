@@ -3,3 +3,4 @@
 build
 .pypirc
 /SmallAppLib.egg-info
+/dist
