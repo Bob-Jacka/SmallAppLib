@@ -1,3 +1,4 @@
+import sys
 from os import PathLike
 from pathlib import Path
 
@@ -54,3 +55,31 @@ class FileSystem:
                 elif dir_number == int(CLOSE_MENU_CODE):
                     TextAnsiFormatter.prYellow('Close menu')
                     break
+
+    def resolve_cli_args(self) -> dict[str, str | int] | None:
+        """
+        Function for accessing CLI arguments
+        :return: tuple with arguments or None if no arg given
+        """
+        sys_args = sys.argv
+        lenght = len(sys_args)
+        if lenght > 1:
+            resolved_args: dict[str, str | int] = dict()  # dict with split arguments
+            for param in sys_args:
+                if '--' in param and '=' in param:
+                    arg_pair = param.split('=')
+                    arg_name = arg_pair[0]  # name of the argument, ex. web_ui_port
+                    arg_value = arg_pair[1]  # value of the argument, ex. 127.0.0.1
+                    resolved_args[arg_name] = arg_value
+                else:
+                    raise Exception('Wrong argument received, expect arg with "--" and "="')
+            return resolved_args
+        elif lenght == 2 and sys_args[1] == 'help':
+            self.print_help()
+        else:
+            return None
+
+    def print_help(self, text: str = ""):
+        print(f"""
+        {text}
+        """)
